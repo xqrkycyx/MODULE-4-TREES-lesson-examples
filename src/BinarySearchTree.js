@@ -1,4 +1,4 @@
-import Queue from "./Queue";
+const Queue = require("./Queue");
 
 class BinarySearchTree {
   constructor(key = null, value = null, parent = null) {
