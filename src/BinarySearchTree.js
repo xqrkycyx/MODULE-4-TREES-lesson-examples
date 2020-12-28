@@ -98,10 +98,9 @@ class BinarySearchTree {
 
   bfs(tree, values = []) {
     const queue = new Queue();
-    const node = tree.root;
-    queue.enqueue(node);
-    while (queue.length) {
-      const node = queue.dequeue();
+    queue.enqueue(tree);
+    let node = queue.dequeue();
+    while (node) {
       values.push(node.value);
 
       if (node.left) {
@@ -111,10 +110,12 @@ class BinarySearchTree {
       if (node.right) {
         queue.enqueue(node.right);
       }
+      node = queue.dequeue();
     }
 
     return values;
   }
+
   _replaceWith(node) {
     if (this.parent) {
       if (this == this.parent.left) {
