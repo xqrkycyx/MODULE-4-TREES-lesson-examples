@@ -131,6 +131,21 @@ class BinarySearchTree {
     return Math.max(leftHeight, rightHeight);
   }
 
+  isBST() {
+    const values = this.dfsInOrder();
+    for (let i = 1; i < values.length; i++) {
+      if (values[i] < values[i - 1]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  findKthLargestValue(k) {
+    const values = this.dfsInOrder();
+    return values[values.length - k];
+  }
+
   _replaceWith(node) {
     if (this.parent) {
       if (this == this.parent.left) {
