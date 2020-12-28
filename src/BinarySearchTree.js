@@ -142,11 +142,9 @@ class BinarySearchTree {
   }
 
   findKthLargestValue(k) {
-    // Use the existing dfsInOrder method to traverse the tree)
     const values = this.dfsInOrder();
     const kthIndex = values.length - k;
 
-    // Ensure the index is within bounds of the array
     if (kthIndex >= 0) {
       return values[kthIndex];
     } else {
