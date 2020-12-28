@@ -116,6 +116,21 @@ class BinarySearchTree {
     return values;
   }
 
+  getHeight(currentHeight = 0) {
+    if (!this.left && !this.right) return currentHeight;
+
+    const newHeight = currentHeight + 1;
+
+    if (!this.left) return this.right.getHeight(newHeight);
+
+    if (!this.right) return this.left.getHeight(newHeight);
+
+    const leftHeight = this.left.getHeight(newHeight);
+    const rightHeight = this.right.getHeight(newHeight);
+
+    return Math.max(leftHeight, rightHeight);
+  }
+
   _replaceWith(node) {
     if (this.parent) {
       if (this == this.parent.left) {
